@@ -5,7 +5,11 @@
 
 ![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/4ceaac1e6bb275e6f2a31a97f678462c.avif?t=1767454465)
 
+![image]()
 
+<video src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/0b2081e647d38db064144468d477ff16.webm?t=1767454465" width="100%" controls autoplay loop muted>
+ not supported
+</video>
 
 ---
 

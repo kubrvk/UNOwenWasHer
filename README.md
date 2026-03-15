@@ -11,7 +11,7 @@
 
 U.N. Owen Was Her is a third-person atmospheric horror game built in Unreal Engine 5.3 using C++. The player is trapped inside the Scarlet Mansion — a haunted estate populated by autonomous entities derived from the U.N. Owen figure. The game is structured around a **Feed-or-Fight** decision loop: enemies can be pacified through a hunger-state system that transforms their behavior and form, or engaged directly using a limited-ammo weapon set. Puzzle progression is tied to entity state, environmental manipulation, and resource management.
 
-All gameplay systems, enemy AI, environmental design, 3D assets, shaders, and tooling were developed by a single developer.
+All gameplay systems, enemy AI, characters, shaders, and tooling were developed by a single developer.
 
 ---
 

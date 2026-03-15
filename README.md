@@ -3,13 +3,7 @@
 > **Third-person action horror** — Unreal Engine 5.3 · C++ · Solo Development  
 > [Steam Page](https://store.steampowered.com/app/3420540/UN_Owen_Was_Her) · [ArtStation](https://www.artstation.com/kubrik)
 
-![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/4ceaac1e6bb275e6f2a31a97f678462c.avif?t=1767454465)
-
-![image]()
-
-<video src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/0b2081e647d38db064144468d477ff16.webm?t=1767454465" width="100%" controls autoplay loop muted>
- not supported
-</video>
+![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/000f0c55e13d6080aaed238df1661a46c4079ada/logo.png?t=1767454465)
 
 ---
 
@@ -20,6 +14,9 @@ U.N. Owen Was Her is a third-person atmospheric horror game built in Unreal Engi
 All gameplay systems, enemy AI, environmental design, 3D assets, shaders, and tooling were developed by a single developer.
 
 ---
+
+![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/4ceaac1e6bb275e6f2a31a97f678462c.avif?t=1767454465)
+
 
 ## Engine & Technical Stack
 
@@ -72,6 +69,7 @@ UNOwen/
 ---
 
 ## Core Systems: Technical Detail
+![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/4aab3ddea795980257c11b0a92cffc84.avif?t=1767454465)
 
 ### 1. Hunger & Transformation System
 
@@ -168,7 +166,7 @@ Combat is deliberately constrained — ammunition is a scarce resource, intended
 ---
 
 ### 4. Entity AI System
-
+![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/25a69bfbc4efe1a46e81fabedcc24c33.avif?t=1767454465)<br>
 All entities are `AUNOwenBase` subclasses controlled by `AUNOwenAIController`, using Unreal's Behavior Tree with custom C++ task and decorator nodes.
 
 **AI State Architecture:**
@@ -255,7 +253,7 @@ Underground Dungeon ──► Final Boss
 ---
 
 ### 7. Boss System — The Original U.N. Owen
-
+![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/eaf3d1ac4c086749b33fbb756326ecc647dd88f6/ss_eaf3d1ac4c086749b33fbb756326ecc647dd88f6.800x600.jpg)<br>
 The final boss (`AUNOwenOriginal`) is a distinct subclass of `AUNOwenBase` with an extended phase-based behavior tree and a bullet-hell attack pattern system.
 
 **Phase Architecture:**
@@ -276,6 +274,7 @@ The final boss (`AUNOwenOriginal`) is a distinct subclass of `AUNOwenBase` with 
 - Full defeat requires reaching 0 HP — feeding alone cannot end the encounter.
 
 ---
+![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/97a04d66ce55ffadcf87a570af48e5e08b1ecf1d/ss_97a04d66ce55ffadcf87a570af48e5e08b1ecf1d.800x600.jpg)
 
 ### 8. Save System — Fireplace Checkpoint
 
@@ -299,7 +298,7 @@ Progress is saved exclusively at fireplace objects (`AFireplaceActor`) distribut
 ---
 
 ### 9. Environmental Design & Zones
-
+![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/18fd9f0ad2d8f2871d1db85bb763762cd21afdb5/ss_18fd9f0ad2d8f2871d1db85bb763762cd21afdb5.800x600.jpg)<br>
 **Mansion Front Wing:**
 - Interconnected halls and bedrooms with high entity density early in the game.
 - Fireplace is located here — functions as the primary early-game safe zone.
@@ -384,12 +383,11 @@ Progress is saved exclusively at fireplace objects (`AFireplaceActor`) distribut
 
 ## Developer
 
-**Kubrik** — Developer & 3D Artist  
-9 years web development · 7 years 3D modeling · 5 years Unreal Engine C++  
-5 shipped commercial games as sole developer.
+**Kubrick** — Developer & 3D Artist  
 
 [Steam](https://store.steampowered.com/search/?developer=Kubrik) · [ArtStation](https://www.artstation.com/kubrik) · [itch.io](https://kubrik.itch.io)
 
 ---
+![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/5cc027cc74f9a91724e1d4d0098e951c3fa204d5/library_hero.jpg?t=1767454465)
 
-*All code, art, design, and marketing assets produced by a single developer. No third-party gameplay code or purchased asset packs used in core systems.*
+*All code, design, and custom assets produced by a single developer. No third-party gameplay code used in core systems.*

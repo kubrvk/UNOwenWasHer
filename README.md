@@ -3,20 +3,19 @@
 > **Third-person action horror** — Unreal Engine 5.3 · C++ · Solo Development  
 > [Steam Page](https://store.steampowered.com/app/3420540/UN_Owen_Was_Her) · [ArtStation](https://www.artstation.com/kubrik)
 
-![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/000f0c55e13d6080aaed238df1661a46c4079ada/logo.png?t=1767454465)
+<img align="left" width="50%" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/d6a468387076ca7158ea8f4090c50de85e833d14/header.jpg?t=1773568446"/>
+<h3>   <a href="https://store.steampowered.com/app/3420540/UN_Owen_Was_Her"><img src="https://img.shields.io/badge/Steam: https://store.steam.com/app/UN_Owen_Was_Her-000000?style=flat-square&logo=steam&logoColor=white" height="25"/> </a></h3>
 
----
-
-## Overview
-
+![](https://img.shields.io/badge/Horror-711fa6?style=) ![](https://img.shields.io/badge/Action--Shooter-647f3d?style=) ![](https://img.shields.io/badge/Bullet-Hell-b42121?style=) ![C++](https://img.shields.io/badge/C++-00599C?style=logo=c%2B%2B&logoColor=white)  ![C++](https://img.shields.io/badge/Unreal_Engine_5.3-0E1128?style=for-the-badges&logo=unrealengine&logoColor=white)  ![C++](https://img.shields.io/badge/Status-Shipped-success?style=for-the-badges) 
+<br>
 U.N. Owen Was Her is a third-person atmospheric horror game built in Unreal Engine 5.3 using C++. The player is trapped inside the Scarlet Mansion — a haunted estate populated by autonomous entities derived from the U.N. Owen figure. The game is structured around a **Feed-or-Fight** decision loop: enemies can be pacified through a hunger-state system that transforms their behavior and form, or engaged directly using a limited-ammo weapon set. Puzzle progression is tied to entity state, environmental manipulation, and resource management.
-
 All gameplay systems, enemy AI, characters, shaders, and tooling were developed by a single developer.
+<br clear="left"/>
 
----
 
-![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/4ceaac1e6bb275e6f2a31a97f678462c.avif?t=1767454465)
-
+<p align="center">
+<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/18fd9f0ad2d8f2871d1db85bb763762cd21afdb5/ss_18fd9f0ad2d8f2871d1db85bb763762cd21afdb5.1920x1080.jpg?t=1773568446" width="25%"/><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/f0f7face85682650a0055f4757690b9a59aa22d9/ss_f0f7face85682650a0055f4757690b9a59aa22d9.1920x1080.jpg?t=1773568446" width="25%"/><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/eaf3d1ac4c086749b33fbb756326ecc647dd88f6/ss_eaf3d1ac4c086749b33fbb756326ecc647dd88f6.1920x1080.jpg?t=1773568446" width="25%"/><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/97a04d66ce55ffadcf87a570af48e5e08b1ecf1d/ss_97a04d66ce55ffadcf87a570af48e5e08b1ecf1d.1920x1080.jpg?t=1773568446" width="25%"/>
+</p>
 
 ## Engine & Technical Stack
 
@@ -32,6 +31,8 @@ All gameplay systems, enemy AI, characters, shaders, and tooling were developed 
 | Platform | PC (Win64/Linux), Steam SDK |
 | 3D Pipeline | ZBrush → Maya → Substance Painter → UE5 |
 | Shader Authoring | UE Material Editor + HLSL custom nodes |
+
+![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/4ceaac1e6bb275e6f2a31a97f678462c.avif?t=1767454465)
 
 ---
 
@@ -67,6 +68,7 @@ UNOwen/
 ```
 
 ---
+
 
 ## Core Systems: Technical Detail
 ![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/4aab3ddea795980257c11b0a92cffc84.avif?t=1767454465)

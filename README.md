@@ -1,14 +1,14 @@
 # U.N. Owen Was Her
 
-> **Third-person action horror** — Unreal Engine 5.3 · C++ · Solo Development  
-> [Steam Page](https://store.steampowered.com/app/3420540/UN_Owen_Was_Her) · [ArtStation](https://www.artstation.com/kubrik)
-
 <img align="left" width="50%" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/d6a468387076ca7158ea8f4090c50de85e833d14/header.jpg?t=1773568446"/>
 <h3>   <a href="https://store.steampowered.com/app/3420540/UN_Owen_Was_Her"><img src="https://img.shields.io/badge/Steam: https://store.steam.com/app/UN_Owen_Was_Her-000000?style=flat-square&logo=steam&logoColor=white" height="25"/> </a></h3>
 
 ![](https://img.shields.io/badge/Horror-711fa6?style=) ![](https://img.shields.io/badge/Action--Shooter-647f3d?style=) ![](https://img.shields.io/badge/Bullet-Hell-b42121?style=) ![C++](https://img.shields.io/badge/C++-00599C?style=logo=c%2B%2B&logoColor=white)  ![C++](https://img.shields.io/badge/Unreal_Engine_5.3-0E1128?style=for-the-badges&logo=unrealengine&logoColor=white)  ![C++](https://img.shields.io/badge/Status-Shipped-success?style=for-the-badges) 
+<br>[Steam Page](https://store.steampowered.com/app/3420540/UN_Owen_Was_Her) · [ArtStation](https://www.artstation.com/kubrik)
 <br>
-U.N. Owen Was Her is a third-person atmospheric horror game built in Unreal Engine 5.3 using C++. The player is trapped inside the Scarlet Mansion — a haunted estate populated by autonomous entities derived from the U.N. Owen figure. The game is structured around a **Feed-or-Fight** decision loop: enemies can be pacified through a hunger-state system that transforms their behavior and form, or engaged directly using a limited-ammo weapon set. Puzzle progression is tied to entity state, environmental manipulation, and resource management.
+U.N. Owen Was Her is a third-person atmospheric horror game built in Unreal Engine 5.3 using C++. The player is trapped inside the Scarlet Mansion, a haunted estate populated by autonomous entities derived from the U.N. Owen figure.<br><br><br> 
+The game is structured around a **Feed-or-Fight** decision loop: enemies can be pacified through a hunger-state system that transforms their behavior and form, or engaged directly using a limited-ammo weapon set.<br> 
+Puzzle progression is tied to entity state, environmental manipulation, and resource management.<br>
 All gameplay systems, enemy AI, characters, shaders, and tooling were developed by a single developer.
 <br clear="left"/>
 
@@ -23,20 +23,20 @@ All gameplay systems, enemy AI, characters, shaders, and tooling were developed 
 |---|---|
 | Engine | Unreal Engine 5.3 |
 | Primary Language | C++ (gameplay, AI, systems) |
-| Scripting / Prototyping | Unreal Blueprint (UI scaffolding, cutscene sequencing) |
+| Scripting / Prototyping | Unreal Blueprint (UI, cutscene sequencing) |
 | Rendering | Lumen (dynamic GI/shadows), custom post-process for horror atmosphere |
 | AI | Unreal Behavior Tree + custom `UBTTask`/`UBTDecorator` nodes |
-| Physics | Chaos — used for thrown food projectiles, physics-driven puzzle props |
+| Physics | Chaos used for thrown food projectiles, physics-driven puzzle props |
 | Save System | `USaveGame` + fireplace checkpoint architecture |
 | Platform | PC (Win64/Linux), Steam SDK |
-| 3D Pipeline | ZBrush → Maya → Substance Painter → UE5 |
-| Shader Authoring | UE Material Editor + HLSL custom nodes |
+| 3D Pipeline | ZBrush, Blender, Substance Painter, UE5 |
+| Shader | UE Material Editor + custom nodes |
 
 ![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/4ceaac1e6bb275e6f2a31a97f678462c.avif?t=1767454465)
 
 ---
 
-## Architecture Overview
+## Code Overview
 
 ```
 UNOwen/
@@ -80,9 +80,9 @@ The Hunger System is the central design mechanic of U.N. Owen Was Her. Every ent
 **Hunger State Machine:**
 
 ```
-HUNGRY ──feed──► SATIATED ──threshold reached──► TRANSFORMED (Human Form)
-   │                                                      │
-   └─── attacked / time decay ──────────────────► HOSTILE (resets hunger)
+HUNGRY > feed > SATIATED > threshold reached > TRANSFORMED (Human Form)
+   I                                                      I
+   >    attacked / time decay  > > > > > >      HOSTILE (resets hunger)
 ```
 
 - `CurrentHunger` increases on each successful feeding interaction.
@@ -91,7 +91,7 @@ HUNGRY ──feed──► SATIATED ──threshold reached──► TRANSFORMED
   - AI Behavior Tree switches from `BTT_HostilePatrol` to `BTT_HumanAssist` subtree.
   - Entity collision profile changes: no longer damages player on overlap.
   - Entity becomes available as a **puzzle assistant** (see Puzzle System).
-- Hunger decays over time via a `FTimerHandle`-driven tick — transformed entities revert if left unattended for a configurable duration (designer-tunable per entity type).
+- Hunger decays over time via a `FTimerHandle`-driven tick , transformed entities revert if left unattended for a configurable duration (designer-tunable per entity type).
 - Attacking a hungry or satiated entity resets hunger to 0 and triggers `BTT_HostileAlert`.
 
 ```cpp
@@ -130,24 +130,24 @@ Food items are defined via `UFoodItemDataAsset`, specifying `NutritionValue`, `L
 
 **Lure AI Response:**
 - `AUNOwenAI` subscribes to `OnFoodLanded` delegate via `UHungerSubsystem`.
-- Entities within `LureRadius` receive a `MoveToLocation` BT task override — interrupts current patrol and pathfinds to food location.
+- Entities within `LureRadius` receive a `MoveToLocation` BT task override , interrupts current patrol and pathfinds to food location.
 - Multiple entities can be lured simultaneously; food item is consumed on first entity arrival.
 
 **Food as Resource Economy:**
 - Food items are finite and distributed through the mansion via `AFoodPickupActor` placements.
 - Designer-placed food scarcity creates tension between luring/feeding and ammo conservation.
-- Cakes, pastries, and sweets have differentiated `NutritionValue` and `LureRadius` values — heavy pastries lure at short range with high nutrition; light sweets lure broadly with low nutrition.
+- Cakes, pastries, and sweets have differentiated `NutritionValue` and `LureRadius` values , heavy pastries lure at short range with high nutrition; light sweets lure broadly with low nutrition.
 
 ---
 
 ### 3. Combat System
 
-Combat is deliberately constrained — ammunition is a scarce resource, intended to be a last resort rather than a primary strategy.
+Combat is deliberately constrained , ammunition is a scarce resource, intended to be a last resort rather than a primary strategy.
 
 **Weapon Architecture:**
 - Weapons defined via `UWeaponDataAsset`: fire rate, damage, ammo type, reload time, projectile class.
 - `UWeaponComponent` manages active weapon, ammo pool per type, and reload state.
-- No ammo respawn — all ammunition is world-placed. Total ammo budget is fixed per playthrough.
+- No ammo respawn , all ammunition is world-placed. Total ammo budget is fixed per playthrough.
 
 **Weapon Categories:**
 
@@ -163,7 +163,7 @@ Combat is deliberately constrained — ammunition is a scarce resource, intended
 
 **Ammo Economy Design:**
 - Total ammo across the mansion is intentionally insufficient to neutralize all entities by combat alone.
-- Players who exhaust ammo early must rely exclusively on food mechanics — this is an intentional design pressure, not a failure state.
+- Players who exhaust ammo early must rely exclusively on food mechanics , this is an intentional design pressure, not a failure state.
 
 ---
 
@@ -175,19 +175,19 @@ All entities are `AUNOwenBase` subclasses controlled by `AUNOwenAIController`, u
 
 ```
 EEntityAIState:
-  ├── Patrol          → Roam waypoint path, periodic idle
-  ├── Investigating   → Move to last known stimulus location
-  ├── Hostile         → Chase and attack player
-  ├── Satiated        → Slow patrol, reduced detection range
-  ├── Lured           → Override path to food location
-  └── HumanAssist     → Follow transformed entity behavior, idle near puzzles
+  ├── Patrol          > Roam waypoint path, periodic idle
+  ├── Investigating   > Move to last known stimulus location
+  ├── Hostile         > Chase and attack player
+  ├── Satiated        > Slow patrol, reduced detection range
+  ├── Lured           > Override path to food location
+  └── HumanAssist     > Follow transformed entity behavior, idle near puzzles
 ```
 
 **Perception:**
 - `UAIPerceptionComponent` with sight and hearing channels.
 - Sight: cone-based, range and angle tuned per entity variant.
 - Hearing: food throws and player movement above speed threshold generate noise events.
-- Transformed (human-form) entities have perception disabled — they no longer register player as threat.
+- Transformed (human-form) entities have perception disabled , they no longer register player as threat.
 
 **Patrol System:**
 - Waypoints are `APatrolPoint` actors placed in editor, referenced via `TArray<APatrolPoint*>` on each entity.
@@ -210,7 +210,7 @@ Puzzle progression gates mansion exploration. Two primary puzzle types are imple
 - Require directing light beams via rotatable mirror props (`ARotatableMirror`).
 - Mirror rotation driven by player interaction; rotation snaps to 45° increments using `FRotator` quantization.
 - Light beam implemented as a `USpotLightComponent` with per-frame trace; on hitting a `AReceptorActor`, triggers the associated event.
-- Some receptors require simultaneous illumination — `AReceptorActor` broadcasts to a `UPuzzleCoordinatorComponent` that tracks how many receptors are active.
+- Some receptors require simultaneous illumination , `AReceptorActor` broadcasts to a `UPuzzleCoordinatorComponent` that tracks how many receptors are active.
 
 **Gear Puzzles:**
 - Interconnected gear meshes must be activated in the correct sequence or combination.
@@ -220,8 +220,8 @@ Puzzle progression gates mansion exploration. Two primary puzzle types are imple
 **Entity Assistance:**
 - Transformed (human-form) U.N. Owen entities can interact with specific puzzle props.
 - `AUNOwenBase::bCanAssistPuzzles` flag enabled post-transformation.
-- Player can direct an assisting entity to a puzzle actor via an interaction prompt — entity pathfinds to position and executes a `UBTTask_ActivatePuzzleProp` task.
-- This reduces puzzles from requiring exact player positioning to allowing remote activation — necessary in areas where the player cannot safely stand.
+- Player can direct an assisting entity to a puzzle actor via an interaction prompt , entity pathfinds to position and executes a `UBTTask_ActivatePuzzleProp` task.
+- This reduces puzzles from requiring exact player positioning to allowing remote activation , necessary in areas where the player cannot safely stand.
 
 ---
 
@@ -237,16 +237,16 @@ The mansion is gated by a seal-based progression structure. Seals are `ASealActo
 **Progression Zones:**
 
 ```
-Mansion Front Wing (Halls, Bedrooms)
-        │
-        ▼ [Seal 1: Library Key Puzzle]
-Multi-Floor Library
-        │
-        ▼ [Seal 2: All Wing Entities Fed or Neutralized]
-Hidden Underground Areas
-        │
-        ▼ [Final Seal: Original U.N. Owen Dungeon Gate]
-Underground Dungeon ──► Final Boss
+1. Mansion Front Wing (Halls, Bedrooms)
+        
+        > [Seal 1: Library Key Puzzle]
+2. Multi-Floor Library
+        
+        > [Seal 2: All Wing Entities Fed or Neutralized]
+3. Hidden Underground Areas
+        
+        > [Final Seal: Original U.N. Owen Dungeon Gate]
+4. Underground Dungeon > Final Boss
 ```
 
 - The final seal requires breaking a sequence of sub-seals distributed across all prior zones, ensuring full exploration before dungeon access.
@@ -254,7 +254,7 @@ Underground Dungeon ──► Final Boss
 
 ---
 
-### 7. Boss System — The Original U.N. Owen
+### 7. Boss System , The Original U.N. Owen
 ![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/eaf3d1ac4c086749b33fbb756326ecc647dd88f6/ss_eaf3d1ac4c086749b33fbb756326ecc647dd88f6.800x600.jpg)<br>
 The final boss (`AUNOwenOriginal`) is a distinct subclass of `AUNOwenBase` with an extended phase-based behavior tree and a bullet-hell attack pattern system.
 
@@ -269,32 +269,32 @@ The final boss (`AUNOwenOriginal`) is a distinct subclass of `AUNOwenBase` with 
 - Projectile types: standard damage, lure-type (draws player toward boss), and time-delayed burst.
 - Pattern difficulty scales per phase: phase 1 uses simple radial spreads; phase 3 introduces interleaved multi-origin patterns.
 
-**Hunger Interaction — Final Boss:**
+**Hunger Interaction , Final Boss:**
 - The original U.N. Owen is not fully transformable but *can* be partially pacified.
 - Feeding during combat temporarily suppresses one attack phase: boss enters `Satiated` for a configurable window, reducing aggression.
 - This creates a resource decision: spend food to create safe windows, or conserve food and rely on combat.
-- Full defeat requires reaching 0 HP — feeding alone cannot end the encounter.
+- Full defeat requires reaching 0 HP , feeding alone cannot end the encounter.
 
 ---
 ![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/97a04d66ce55ffadcf87a570af48e5e08b1ecf1d/ss_97a04d66ce55ffadcf87a570af48e5e08b1ecf1d.800x600.jpg)
 
-### 8. Save System — Fireplace Checkpoint
+### 8. Save System , Fireplace Checkpoint
 
 Progress is saved exclusively at fireplace objects (`AFireplaceActor`) distributed sparingly through the mansion.
 
 **Checkpoint Architecture:**
 - `AFireplaceActor` triggers a `USaveManager::SaveCheckpoint()` call on player interaction.
 - Saved data: player position (nearest fireplace index, not raw coordinates), inventory state, ammo counts, entity hunger states, puzzle solved flags, seal states, and active zone.
-- Entity states are serialized as `TArray<FEntitySaveData>` — each entry stores entity unique ID, current hunger, and transformation status. On load, entities are restored to their saved state rather than respawning fresh.
+- Entity states are serialized as `TArray<FEntitySaveData>` , each entry stores entity unique ID, current hunger, and transformation status. On load, entities are restored to their saved state rather than respawning fresh.
 - Async save via `UGameplayStatics::AsyncSaveGameToSlot` to avoid frame hitching.
 
 **Storage Access:**
-- Fireplace interaction also opens `UStorageWidget` — a stash shared across all fireplace locations.
+- Fireplace interaction also opens `UStorageWidget` , a stash shared across all fireplace locations.
 - Storage persists across saves; items placed in storage are always available at any fireplace.
 - Implemented as a separate `FStorageSaveData` block within the save file, loaded independently.
 
 **Design Intent:**
-- Fireplace scarcity makes save timing a conscious decision — reinforces horror pacing and tension between progress preservation and resource use.
+- Fireplace scarcity makes save timing a conscious decision , reinforces horror pacing and tension between progress preservation and resource use.
 - No autosave outside of fireplace interaction.
 
 ---
@@ -303,7 +303,7 @@ Progress is saved exclusively at fireplace objects (`AFireplaceActor`) distribut
 ![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/18fd9f0ad2d8f2871d1db85bb763762cd21afdb5/ss_18fd9f0ad2d8f2871d1db85bb763762cd21afdb5.800x600.jpg)<br>
 **Mansion Front Wing:**
 - Interconnected halls and bedrooms with high entity density early in the game.
-- Fireplace is located here — functions as the primary early-game safe zone.
+- Fireplace is located here , functions as the primary early-game safe zone.
 - Props and interactive objects are `AInteractableActor` subclasses with `UInteractionComponent`.
 
 **Multi-Floor Library:**
@@ -321,7 +321,7 @@ Progress is saved exclusively at fireplace objects (`AFireplaceActor`) distribut
 **Lighting Architecture:**
 - All dynamic lighting via Lumen; no baked lightmaps.
 - Each zone uses a `APostProcessVolume` with zone-specific color grading, vignette, and chromatic aberration settings.
-- Fireplace uses a dynamic point light with flickering driven by a `UCurveFloat` on light intensity — no Blueprint logic, pure C++ timeline component.
+- Fireplace uses a dynamic point light with flickering driven by a `UCurveFloat` on light intensity , no Blueprint logic, pure C++ timeline component.
 
 ---
 
@@ -329,7 +329,7 @@ Progress is saved exclusively at fireplace objects (`AFireplaceActor`) distribut
 
 **Post-Process Horror Pipeline:**
 - Screen-space lens distortion on entity proximity: scaled via distance to nearest `AUNOwenBase` actor, updated per-frame.
-- Desaturation increases as player health decreases — material scalar parameter driven by `UHealthComponent`.
+- Desaturation increases as player health decreases , material scalar parameter driven by `UHealthComponent`.
 - Custom depth pass used for entity silhouette rendering through walls when in `Investigating` state (proximity warning system).
 
 **Dynamic Lighting:**
@@ -362,7 +362,7 @@ Progress is saved exclusively at fireplace objects (`AFireplaceActor`) distribut
 | Developer count | 1 (solo) |
 | Engine | Unreal Engine 5.3 |
 | Languages | C++, HLSL (custom shader nodes) |
-| 3D Assets | All original — modeled, textured, rigged, animated by developer |
+| 3D Assets | All original , modeled, textured, rigged, animated by developer |
 | Zones | 3 major (Front Wing, Library, Underground Dungeon) |
 | Entity variants | Multiple U.N. Owen variants + Original final boss |
 | Gameplay systems | 10+ discrete systems (see above) |
@@ -375,17 +375,17 @@ Progress is saved exclusively at fireplace objects (`AFireplaceActor`) distribut
 
 | Project | Description |
 |---|---|
-| [TIME SOUL](https://store.steampowered.com/app/2928270/TIME_SOUL) | Souls-like action platformer; parkour, time-as-resource, procedural gen — UE5.1 |
-| [Olympus of the Heavens](https://store.steampowered.com/app/3358020/Olympus_of_the_Heavens) | Isometric co-op ARPG; procedural gen, Steam networking — UE5 |
+| [TIME SOUL](https://store.steampowered.com/app/2928270/TIME_SOUL) | Souls-like action platformer; parkour, time-as-resource, procedural gen , UE5.1 |
+| [Olympus of the Heavens](https://store.steampowered.com/app/3358020/Olympus_of_the_Heavens) | Isometric co-op ARPG; procedural gen, Steam networking , UE5 |
 | [Blood Garden](https://kubrik.itch.io/bloodgarden) | Souls-like melee combat; stamina system, parry, enemy AI |
 | [Royal Jump](https://play.google.com/store/apps/details?id=com.Kubrick.RoyalJump) | Mobile platformer; touch controls, physics movement |
-| [ArtStation Portfolio](https://www.artstation.com/kubrik) | 3D modeling — characters, creatures, props, environments |
+| [ArtStation Portfolio](https://www.artstation.com/kubrik) | 3D modeling , characters, creatures, props, environments |
 
 ---
 
 ## Developer
 
-**Kubrick** — Developer & 3D Artist  
+**Kubrick** , Developer & 3D Artist  
 
 [Steam](https://store.steampowered.com/search/?developer=Kubrik) · [ArtStation](https://www.artstation.com/kubrik) · [itch.io](https://kubrik.itch.io)
 

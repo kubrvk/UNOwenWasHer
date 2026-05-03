@@ -355,15 +355,15 @@ Progress is saved exclusively at fireplace objects (`AFireplaceActor`) distribut
 
 | Category | Detail |
 |---|---|
-| Developer count | 1 (solo) |
+| Developer count | 1 |
 | Engine | Unreal Engine 5.3 |
-| Languages | C++, HLSL (custom shader nodes) |
+| Languages | C++, Blueprint |
 | 3D Assets | All original , modeled, textured, rigged, animated by developer |
 | Zones | 3 major (Front Wing, Library, Underground Dungeon) |
 | Entity variants | Multiple U.N. Owen variants + Original final boss |
 | Gameplay systems | 10+ discrete systems (see above) |
-| Platform | PC Windows / Linux (Steam) |
-| Development tools | UE5 Editor, ZBrush, Maya, Blender, Substance Painter, Photoshop, After Effects |
+| Platform | PC Windows |
+| Development tools | UE5, ZBrush, Blender, Substance Painter, Photoshop |
 
 ---
 

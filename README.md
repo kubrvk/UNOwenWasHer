@@ -13,7 +13,7 @@ All gameplay systems, enemy AI, characters, shaders, and tooling were developed 
 <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/18fd9f0ad2d8f2871d1db85bb763762cd21afdb5/ss_18fd9f0ad2d8f2871d1db85bb763762cd21afdb5.1920x1080.jpg?t=1773568446" width="25%"/><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/f0f7face85682650a0055f4757690b9a59aa22d9/ss_f0f7face85682650a0055f4757690b9a59aa22d9.1920x1080.jpg?t=1773568446" width="25%"/><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/eaf3d1ac4c086749b33fbb756326ecc647dd88f6/ss_eaf3d1ac4c086749b33fbb756326ecc647dd88f6.1920x1080.jpg?t=1773568446" width="25%"/><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/97a04d66ce55ffadcf87a570af48e5e08b1ecf1d/ss_97a04d66ce55ffadcf87a570af48e5e08b1ecf1d.1920x1080.jpg?t=1773568446" width="25%"/>
 </p>
 
-## Engine & Technical Stack
+## Technical Details
 
 | Layer | Technology |
 |---|---|
@@ -66,7 +66,7 @@ UNOwen/
 ---
 
 
-## Core Systems: Technical Detail
+## Core Systems
 ![image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/extras/4aab3ddea795980257c11b0a92cffc84.avif?t=1767454465)
 
 ### 1. Hunger & Transformation System

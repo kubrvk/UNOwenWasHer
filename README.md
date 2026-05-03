@@ -24,7 +24,7 @@ All gameplay systems, enemy AI, characters, shaders, and tooling were developed 
 | AI | Unreal Behavior Tree + custom `UBTTask`/`UBTDecorator` nodes |
 | Physics | Chaos used for thrown food projectiles, physics-driven puzzle props |
 | Save System | `USaveGame` + fireplace checkpoint architecture |
-| Platform | PC (Win64/Linux), Steam SDK |
+| Platform | PC (Win64), Steam SDK |
 | 3D Pipeline | ZBrush, Blender, Substance Painter, UE5 |
 | Shader | UE Material Editor + custom nodes |
 

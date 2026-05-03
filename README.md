@@ -1,6 +1,6 @@
 # U.N. Owen Was Her
 
-<img align="left" width="50%" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/d6a468387076ca7158ea8f4090c50de85e833d14/header.jpg?t=1773568446"/>
+<img align="left" width="40%" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3420540/d6a468387076ca7158ea8f4090c50de85e833d14/header.jpg?t=1773568446"/>
 <h3>   <a href="https://store.steampowered.com/app/3420540/UN_Owen_Was_Her"><img src="https://img.shields.io/badge/Steam: https://store.steam.com/app/UN_Owen_Was_Her-000000?style=flat-square&logo=steam&logoColor=white" height="25"/> </a></h3>
 
 ![](https://img.shields.io/badge/Horror-711fa6?style=) ![](https://img.shields.io/badge/Action--Shooter-647f3d?style=) ![](https://img.shields.io/badge/Bullet-Hell-b42121?style=) ![C++](https://img.shields.io/badge/C++-00599C?style=logo=c%2B%2B&logoColor=white)  ![C++](https://img.shields.io/badge/Unreal_Engine_5.3-0E1128?style=for-the-badges&logo=unrealengine&logoColor=white)  ![C++](https://img.shields.io/badge/Status-Shipped-success?style=for-the-badges)<br> 
